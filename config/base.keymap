@@ -31,16 +31,12 @@
   tapping-term-ms = <170>;
 };
 
-&sl {
-    release-after-ms = <1500>;
-};
 &lt {
   flavor = "balanced";
   tapping-term-ms = <200>;
   quick-tap-ms = <QUICK_TAP_MS>;
 };
 / {
-        
         keymap {
                 compatible = "zmk,keymap";
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -81,7 +77,7 @@ label= "SYM"                               ;
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //             ┃     #     ┃     $     ┃     (     ┃     )     ┃     ~     ┃   ┃    LEFT   ┃    DOWN   ┃     UP    ┃   RIGHT   ┃     |     ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
-// ┃           ┃     %     ┃     ^     ┃     [     ┃     ]     ┃     _     ┃   ┃           ┃           ┃           ┃           ┃     \     ┃     ~     ┃
+// ┃           ┃     %     ┃     ^     ┃     [     ┃     ]     ┃     *     ┃   ┃     _     ┃           ┃           ┃           ┃     \     ┃     ~     ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃     &     ┃     *     ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -89,9 +85,9 @@ label= "SYM"                               ;
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
                 &kp EXCL    &kp AT      &kp LBRC    &kp RBRC    &kp RA(U)       &kp SQT     &kp DQT     &kp GRAVE   &trans      &trans
-                &kp HASH    &kp DLLR    &kp LPAR    &kp RPAR    &kp TILDE       &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &kp PIPE
-    &trans      &kp PRCNT   &kp CARET   &kp LBKT    &kp RBKT    &kp UNDER       &trans      &trans      &trans      &trans      &kp BSLH     &trans
-                                        &kp AMPS    &kp ASTRK      &trans       &trans      &trans      &trans   
+                &kp HASH    &kp DLLR    &kp LPAR    &kp RPAR    &kp TILDE       &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT   &kp PIPE
+    &trans      &kp PRCNT   &kp CARET   &kp LBKT    &kp RBKT    &kp ASTRK       &kp UNDER   &trans      &trans      &trans      &kp BSLH     &trans
+                                        &kp AMPS    &kp ASTRK      &trans        &trans      &trans      &trans   
                 >;
                 };
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -101,20 +97,20 @@ label= "SYM"                               ;
 label= "MOUSE"                               ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-//             ┃ TAKE SNAP ┃    MB4    ┃  MOVE_UP  ┃    MB5    ┃  NEXTTAB  ┃   ┃  PAGE UP  ┃  SCRL UP  ┃ C_BRI_UP  ┃  C_BRI_DN ┃ C_BRI_LW  ┃
+//             ┃ TAKE SNAP ┃    MB4    ┃  MOVE_UP  ┃    MB5    ┃     ¨     ┃   ┃  PAGE UP  ┃     "     ┃ C_BRI_UP  ┃  C_BRI_DN ┃ C_BRI_LW  ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//             ┃           ┃ MOVE_LEFT ┃ MOVE_DOWN ┃ MOVE_RIGHT┃  PREVTAB  ┃   ┃    MB2    ┃    MB1    ┃ K_VOL_UP  ┃ K_VOL_DN  ┃  KC_MUTE  ┃
+//             ┃     #     ┃ MOVE_LEFT ┃ MOVE_DOWN ┃ MOVE_RIGHT┃     ~     ┃   ┃    MB2    ┃    MB1    ┃ K_VOL_UP  ┃ K_VOL_DN  ┃  KC_MUTE  ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
-// ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃ PAGE DOWN ┃ SCRL DOWN ┃   C_PREV  ┃   C_NEXT  ┃    PLAY   ┃ SCREENLOCK┃
+// ┃           ┃     %     ┃     ^     ┃     [     ┃     ]     ┃     *     ┃   ┃ PAGE DOWN ┃     _     ┃   K_PREV  ┃   K_NEXT  ┃  C_PLAY   ┃           ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
+//                                     ┃     &     ┃     *     ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
  bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
-                &kp LS(LG(N4)) &mkp MB4    &mmv MOVE_UP &mkp MB5    &kp LC(TAB)       &kp PG_UP     &msc SCRL_UP     &kp C_BRI_DN   &kp C_BRI_UP      &kp C_BRI_MIN
-                &trans     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &kp LC(LS(TAB))   &mkp MB2    &mkp MB1    &kp C_VOL_DN   &kp C_VOL_UP   &kp C_MUTE
-    &trans      &trans      &trans      &trans      &trans      &trans          &kp PG_DN  &msc SCRL_DOWN &kp C_PREV &kp C_NEXT &kp C_PP    &kp C_PWR
+                &kp EXCL    &mkp MB4    &mmv MOVE_UP &mkp MB5    &kp RA(U)       &kp PAGE_UP     &msc SCRL_UP     &kp GRAVE   &trans      &trans
+                &kp HASH    &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &kp TILDE   &mkp MB2    &mkp MB1    &kp UP      &kp RIGHT   &kp PIPE
+    &trans      &trans      &trans      &trans      &trans      &trans          &kp PAGE_DOWN      &msc SCRL_DOWN      &trans      &trans     &trans       &trans
                                         &trans      &trans      &trans          &trans      &trans      &trans      
                         >;
                 };
