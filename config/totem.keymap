@@ -90,7 +90,7 @@ label= "SYM"                               ;
 
                 &kp EXCL    &kp AT      &kp LBRC    &kp RBRC    &kp RA(U)       &kp SQT     &kp DQT     &kp GRAVE   &trans      &trans
                 &kp HASH    &kp DLLR    &kp LPAR    &kp RPAR    &kp TILDE       &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &kp PIPE
-    &trans      &kp PRCNT   &kp CARET   &kp LBKT    &kp RBKT    &kp UNDER       &trans      &trans      &trans      &trans      &kp BSLH     &trans
+    &trans      &kp PRCNT   &kp CARET   &kp LBKT    &kp RBKT    &kp ASTRK       &trans      &trans      &trans      &trans      &kp BSLH     &trans
                                         &kp AMPS    &kp ASTRK      &trans       &trans      &trans      &trans   
                 >;
                 };
