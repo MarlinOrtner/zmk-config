@@ -26,6 +26,8 @@ manifest:
       url-base: https://github.com/urob
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: bildermankawasaki
+      url-base: https://github.com/bildermankawasaki
 
   projects:
     - name: zmk
@@ -46,13 +48,18 @@ manifest:
     - name: zmk-unicode
       path: modules/zmk/unicode
 
-    # Only source necessary Zephyr modules. Remove this entire section to restore
-    # the default (needed for less common hardware).
+    - name: zmk-keyboard-totem
+      remote: bildermankawasaki
+      revision: main
+
+    # Temporarily overload Zephyr until
+    # https://github.com/zmkfirmware/zephyr/pull/40 is merged.
     - name: zephyr
-      remote: zmkfirmware
       revision: v3.5.0+zmk-fixes
       clone-depth: 1
       import:
+        # Only enable most commonly used boards. For less common hardware one
+        # may need to enable additional modules.
         name-allowlist:
           - cmsis
           - hal_nordic
@@ -60,6 +67,5 @@ manifest:
           - hal_stm32
           - lvgl
           - tinycrypt
-
   self:
     path: config
