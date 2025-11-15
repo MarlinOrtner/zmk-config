@@ -236,7 +236,7 @@ ZMK_BASE_LAYER(NUM,
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃           ┃           ┃           ┃           ┃           ┃   ┃     =     ┃     7     ┃     8     ┃     9     ┃     +     ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//             ┃           ┃           ┃           ┃           ┃           ┃   ┃     -     ┃     4     ┃     5     ┃     6     ┃     *     ┃
+//             ┃    LGUI   ┃   LCTRL   ┃    LALT   ┃   LSHFT   ┃           ┃   ┃     -     ┃     4     ┃     5     ┃     6     ┃     *     ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 // ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃     +     ┃     1     ┃     2     ┃     3     ┃     \     ┃           ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -244,7 +244,7 @@ ZMK_BASE_LAYER(NUM,
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
                 &trans      &trans      &trans      &trans      &trans       ,  &kp EQUAL   &kp N7       &kp N8       &kp N9       &kp PLUS ,
-                &trans      &trans      &trans      &trans      &trans       ,  &kp MINUS   &kp N4       &kp N5       &kp N6       &kp ASTRK ,
+                &kp LGUI    &kp LCTRL   &kp LALT    &kp LSHFT   &trans       ,  &kp MINUS   &kp N4       &kp N5       &kp N6       &kp ASTRK ,
     &trans      &trans      &trans      &trans      &trans      &trans       ,  &kp PLUS    &kp N1       &kp N2       &kp N3       &kp BSLH    &trans         ,
                                         &trans      &trans      &trans       ,  &lt FUN N0  &trans      &trans      
 )
@@ -262,8 +262,8 @@ ZMK_BASE_LAYER(FUN,
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
-                &trans      &trans      &trans      &trans      &trans       ,   &trans      &kp N7       &kp N8       &kp N9       &kp PLUS ,
-                &kp LGUI    &kp LCTRL   &kp LALT    &kp LSHFT   &trans       ,   &trans      &kp N4       &kp N5       &kp N6       &kp ASTRK ,
-    &trans      &trans      &trans      &trans      &trans      &trans       ,   &trans      &kp N1       &kp N2       &kp N3       &kp BSLH    &trans         ,
-                                        &trans      &trans      &trans       ,  &kp N0      &trans      &trans      
+                &trans      &trans      &trans      &trans      &trans       ,   &trans      &kp F7       &kp F8       &kp F9       &kp F12 ,
+                &kp LGUI    &kp LCTRL   &kp LALT    &kp LSHFT   &trans       ,   &trans      &kp F4       &kp F5       &kp F6       &kp F11 ,
+    &trans      &trans      &trans      &trans      &trans      &trans       ,   &trans      &kp F1       &kp F2       &kp F3       &kp F10    &trans         ,
+                                        &trans      &trans      &trans       ,   &trans      &trans      &trans      
 )
