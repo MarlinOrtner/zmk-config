@@ -1,11 +1,7 @@
 // Settings tuned for 3840 x 2160 display resolution
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 300 // 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20  // 10
-#define BASE 0
-#define SYM  1
-#define MOUSE  2
-#define WIN  3
-#define NUM  4
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200 // 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 40  // 10
+
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
@@ -19,17 +15,17 @@
 
 &msc {
   acceleration-exponent = <0>;          // 0
-  time-to-max-speed-ms = <100>;         // 300
+  time-to-max-speed-ms = <300>;         // 300
   delay-ms = <0>;                       // 0
 };
 
 &mmv_input_listener {
   warp {
-    layers = <MOUSE>;
+    layers = <WIN>;
     input-processors = <&zip_xy_scaler 3 1>;
   };
   precision {
-    layers = <MOUSE>;
+    layers = <NUM>;
     input-processors = <&zip_xy_scaler 1 2>;
   };
 };
@@ -46,11 +42,11 @@
 
 &msc_input_listener {
   warp {
-    layers = <MOUSE>;
+    layers = <WIN>;
     input-processors = <&zip_scroll_scaler 2 1>;
   };
   precision {
-    layers = <MOUSE>;
+    layers = <NUM>;
     input-processors = <&zip_scroll_scaler 1 2>;
   };
 };

@@ -23,8 +23,8 @@
         name,                                                                  \
           LT       RT                                                          \
           LM       RM                                                          \
-                RB                                                             \
-         LH                          RH                                        \
+         LB       RB \
+          LH                          RH \
     )
 
 #include "zmk-helpers/key-labels/totem.h"
