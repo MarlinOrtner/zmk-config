@@ -30,6 +30,7 @@
   #define _BT_SEL_KEYS_ &trans &trans &trans &trans &trans
 #endif
 
+
 #define BASE 0
 #define SYM  1
 #define MOUSE  2
@@ -59,8 +60,12 @@
 };
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
-#define THUMBS LH2 LH1 LH0 RH0 RH1 RH2 // Thumbs on 36+ keys.
 
+#ifndef LH2
+  #define THUMBS LH1 LH0 RH0 RH1         // Thumbs on 34 keys.
+#else
+  #define THUMBS LH2 LH1 LH0 RH0 RH1 // Thumbs on 36+ keys.
+#endif
 //hold-while-undecided;                                      
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
   ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
@@ -121,7 +126,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
 ZMK_TRI_STATE(
     smart_mouse, bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
     ignored-key-positions =
-        <LT0 LT1 LT2 LT3 LT4 LH1 LH0 LM0 LM1 LM2 LM3 RT0 RT1 RT2 RT3 RM0 RM1 RM2 RM3 RB0 RB1 RH0 RH1 RH2>;
+        <LT0 LT1 LT2 LT3 LT4 LH1 LH0 LM0 LM1 LM2 LM3 RT0 RT1 RT2 RT3 RM0 RM1 RM2 RM3 RB0 RB1 RH0 RH1>;
     ignored-layers = <MOUSE NUM WIN>;)
 
 #define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
@@ -164,7 +169,7 @@ ZMK_BASE_LAYER(BASE,
 //              ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                   &hml LGUI A   &hml LCTRL S  &hml LALT D   &hml LSHFT F  &kp G        ,  &kp H       &hmr RSHFT J &hmr RALT K  &hmr RCTRL L &hmr RGUI SEMICOLON ,
 //╭─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp ESC       &kp Z         &kp X         &kp C         &kp V         &kp B        ,  &kp N        &kp M          &comma_morph   &dot_morph      &kp FSLH      &kp BSLH ,
+                  &kp Z         &kp X         &kp C         &kp V         &kp B        ,  &kp N        &kp M          &comma_morph   &dot_morph      &kp FSLH ,
 //╰─────────────┼─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┼─────────────┼──────────────╯
                                               &kp ESC       &lt WIN TAB   &lt NUM ENTER,  &lt SYM SPACE MAGIC_SHIFT  &lt MOUSE BSPC
 //                                          ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯ 

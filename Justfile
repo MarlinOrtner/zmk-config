@@ -37,7 +37,10 @@ build expr *west_args:
     targets=$(just _parse_targets {{ expr }})
 
     [[ -z $targets ]] && echo "No matching targets found. Aborting..." >&2 && exit 1
+    
     echo "$targets" | while IFS=, read -r board shield snippet artifact; do
+        
+        # Check if the current shield is a Charybdis
         just _build_single "$board" "$shield" "$snippet" "$artifact" {{ west_args }}
     done
 

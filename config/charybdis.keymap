@@ -23,8 +23,9 @@
         name,                                                                  \
           LT       RT                                                          \
           LM       RM                                                          \
-       &kp ESC  LB       RB &kp BSLH                                              \
-          LH                          RH \
+          LB       RB                                               \
+          LH       RH \
     )
-#include "zmk-helpers/key-labels/totem.h"
-#include "base.keymap"
+#include "zmk-helpers/key-labels/charybdis.h"
+//#include "base.keymap"
+#include "keymap/qwerty.keymap"

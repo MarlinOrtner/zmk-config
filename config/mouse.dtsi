@@ -2,7 +2,10 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200 // 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 40  // 10
 
+#include <dt-bindings/zmk/mouse.h>
+#include <behaviors/mouse_keys.dtsi>
 #include <dt-bindings/zmk/pointing.h>
+#include <behaviors.dtsi>
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 

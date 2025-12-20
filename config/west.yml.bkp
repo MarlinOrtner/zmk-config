@@ -25,21 +25,25 @@ manifest:
     - name: urob
       url-base: https://github.com/urob
     - name: zmkfirmware
+      #url-base: https://github.com/zmkfirmware
       url-base: https://github.com/petejohanson
     - name: bildermankawasaki
       url-base: https://github.com/bildermankawasaki
-    - name: 280Zo
-      url-base: https://github.com/280Zo
+    - name: inorichi
+      url-base: https://github.com/inorichi
+
+    - name: badjeff
+      url-base: https://github.com/badjeff
 
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
-  #    revision: feat/pointers-move-scroll
+      #revision: feat/pointers-move-scroll
+    #- name: zmk-pmw3610-driver
+    #  remote: inorichi
+    #  revision: main
 
-    - name: zmk-pmw3610-driver
-      remote: 280Zo
-      revision: main
     # ZMK modules
     - name: zmk-adaptive-key
       path: modules/zmk/adaptive-key
@@ -58,9 +62,9 @@ manifest:
       remote: bildermankawasaki
       revision: main
 
-  #  - name: zmk-pmw3610-driver
-  #    remote: badjeff
-  #    revision: main
+    - name: zmk-pmw3610-driver
+      remote: badjeff
+      revision: main
 
     # Temporarily overload Zephyr until
     # https://github.com/zmkfirmware/zephyr/pull/40 is merged.
