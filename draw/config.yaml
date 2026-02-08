@@ -15,10 +15,23 @@ parse_config:
     "&bt BT_SEL 1": BT 2
     "&bt BT_SEL 2": BT 3
     "&bt BT_SEL 3": BT 4
+    "&bt BT_SEL 4": BT 5
+    "&bt BT_DISC 0": BT DISC 1
+    "&bt BT_DISC 1": BT DISC 2
+    "&bt BT_DISC 2": BT DISC 3
+    "&bt BT_DISC 3": BT DISC 4
+    "&bt BT_DISC 4": BT DISC 5
 
-    "&kp LC(INS)": Copy
+    "&tog 1": MAC/OS Layer Swap
+    "&kp RA(U)": MAC Compose Key
+    "&kp LS(LG(N4))": MAC Screenshot
+
+    "&kp LC(C)": Copy
     "&kp LC(X)": Cut
-    "&kp LS(INS)": Paste
+    "&kp LS(V)": Paste
+    "&kp LC(W)": Close
+    "&kp LC(A)": TMUX A
+    "&kp LC(B)": TMUX B
 
     "&kp LG(LC(LEFT))": Prev Desk
     "&kp LG(LC(RIGHT))": Next Desk
@@ -27,6 +40,8 @@ parse_config:
 
     "&swapper": Next Win
     "&kp LS(TAB)": Prev Win
+    "&kp LC(TAB)": Next Tab
+    "&kp LC(LS(TAB)": Prev Tab
     "&dot_spc": Sentence
     "&num_dance": { "t": "Numword", "s": "Sticky Num" }
     "&magic_shift": { "t": Magic, "h": "Shift" }
@@ -37,8 +52,8 @@ parse_config:
     "&hm_combo_ldrsh": Shift+Leader
     "&hm_combo_lpar": { "t": "(", "right": "<" }
     "&hm_combo_rpar": { "t": ")", "right": ">" }
-    "&kp LBKT": { "t": "[", "right": "{" }
-    "&kp RBKT": { "t": "]", "right": "}" }
+    "&kp LBKT": "["
+    "&kp RBKT": "]"
 
     "&mmv MOVE_UP": Mouse ↑
     "&mmv MOVE_DOWN": Mouse ↓
@@ -58,7 +73,24 @@ parse_config:
     "&mkp MB4": Back Click
     "&mkp MB5": Forward Click
 
-    "td_esc_scrl_slow": { "s": "Scroll", "t": "ESC", "h": "Snipe" }
+    "&kp LA(LC(LG(N1)))": DWM 1
+    "&kp LA(LC(LG(N2)))": DWM 2
+    "&kp LA(LC(LG(N3)))": DWM 3
+    "&kp LA(LC(LG(N4)))": DWM 4
+    "&kp LA(LC(LG(N5)))": DWM 5
+    "&kp LA(LC(LG(N6)))": DWM 6
+    "&kp LA(LC(LG(N7)))": DWM 7
+    "&kp LA(LC(LG(N8)))": DWM 8
+    "&kp LA(LC(LG(N9)))": DWM 9
+    "&kp LA(LC(LG(N0)))": DWM 10
+    "&kp LA(LC(LG(H)))": DWM ←
+    "&kp LA(LC(LG(L)))": DWM →
+    "&kp LA(LC(LG(K)))": DWM ↑
+    "&kp LA(LC(LG(J)))": DWM ↓
+    "&kp LA(LC(LG(F)))": DWM Full
+    "&kp LA(LC(LG(TAB)))": DWM Last
+
+    "&td_esc_scrl_slow": { "s": "Scroll", "t": "ESC", "h": "Snipe" }
   trans_legend: { "t": "", "type": "trans" }
 
   zmk_combos:
