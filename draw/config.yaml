@@ -171,5 +171,5 @@ parse_config:
 
 draw_config:
   append_colon_to_layer_header: false
-  dark_mode: auto
+  dark_mode: true
   footer_text: "marlinortner/zmk-config"
