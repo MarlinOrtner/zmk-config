@@ -22,23 +22,25 @@
 #include <behaviors/unicode.dtsi> // Requires zmk-unicode module.
 #include "zmk-helpers/unicode-chars/german.dtsi"
 #ifdef CONFIG_WIRELESS
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
+  #include <dt-bindings/zmk/bt.h>
+  #include <dt-bindings/zmk/outputs.h>
+#endif
 
 #define XXX &none
-#define ___ ___
+#define ___ &trans
 
-#define BASE 0
-#define SYM  1
-#define MOUSE  2
-#define WIN  3
-#define NUM  4
-#define FUN  5
-#define UTIL  6
-#define SLOW  7
-#define SCROLL  8
-#define BT  9
-#define GAME  10
+#define BASE_MAC    0
+#define BASE_OS     1
+#define SYM         2
+#define MOUSE       3
+#define WIN         4
+#define NUM         5
+#define FUN         6
+#define SLOW        7
+#define SCROLL      8
+#define UTIL        9
+#define BT          10
+
 #define QUICK_TAP_MS 175
 
 &mt {
@@ -63,11 +65,16 @@
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
 
-#ifndef LH2
-  #define THUMBS LH1 LH0 RH0 RH1         // Thumbs on 34 keys.
+#ifndef RH2
+  #ifndef LH2 
+    #define THUMBS LH1 LH0 RH0 RH1         // Thumbs on 34 keys.
+  #else
+    #define THUMBS LH2 LH1 LH0 RH0 RH1         // Thumbs on 35 keys.
+  #endif
 #else
-  #define THUMBS LH2 LH1 LH0 RH0 RH1 // Thumbs on 36+ keys.
+  #define THUMBS LH2 LH1 LH0 RH0 RH1 RH2// Thumbs on 36+ keys.
 #endif
+
 //hold-while-undecided;                                      
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
   ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
@@ -148,6 +155,8 @@ SIMPLE_MORPH(comma_inner_morph, CTL, &kp SEMICOLON, &kp LESS_THAN)
 SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &dot_inner_morph)
 SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
 #define CANCEL    &kp K_CANCEL            // Cancel caps-word & auto-layers.
+#define DWM_MOD(KEY) &kp LA(LC(LG(KEY))) // Custom DWM Modifier for MacOS and Linux
+
 
 #ifndef ZMK_BASE_LAYER
   #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH)                 \
@@ -167,7 +176,7 @@ SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
 //                                     ┃    ESC    ┃  WIN/TAB  ┃ NUM/ENTER ┃   ┃ SYM/SPACE ┃MOUSE/BSPC ┃   DEL     ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
-ZMK_BASE_LAYER(BASE,
+ZMK_BASE_LAYER(BASE_MAC,
 //              ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
                   &kp Q         &kp W         &kp E         &kp R         &kp T        ,  &kp Y         &kp U         &kp I         &kp O          &lt BT P       ,
 //              ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
@@ -175,8 +184,15 @@ ZMK_BASE_LAYER(BASE,
 //╭─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                   &kp Z         &kp X         &kp C         &lt MOUSE V   &kp B        ,  &kp N         &kp M         &comma_morph   &dot_morph    &kp FSLH ,
 //╰─────────────┼─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┼─────────────┼──────────────╯
-                                            &td_esc_scrl_slow &lt WIN TAB   &lt NUM ENTER,  &lt SYM SPACE MAGIC_SHIFT  &lt MOUSE BSPC
+                                            &td_esc_scrl_slow &lt WIN TAB   &lt NUM ENTER ,  &lt SYM SPACE MAGIC_SHIFT  &lt MOUSE BSPC
 //                                          ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯ 
+)
+
+ZMK_BASE_LAYER(BASE_OS,
+                ___      ___      ___      ___      ___       ,   ___      ___      ___        ___       ___ ,
+                ___      ___      ___      ___      ___       ,   ___      ___      ___        ___       ___ ,
+                ___      ___      ___      ___      ___       ,   ___      ___      ___        ___       ___ ,
+                                  ___      ___      ___       ,   ___      ___      ___      
 )
 
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -232,10 +248,10 @@ ZMK_BASE_LAYER(WIN,
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
-               ___      ___      ___      ___      ___       , &kp LC(N1)   &kp LC(N2)       &kp LC(N3)       &kp LC(N4)       &kp LC(N5) ,
-               ___      &kp LCTRL   &kp LALT    &kp LSHFT   ___       , &kp LC(H)   &kp LC(J)       &kp LC(K)       &kp LC(L)       ___,
-               ___      ___      ___      ___      ___       , &kp LC(N6)   &kp LC(N7)       &kp LC(N8)       &kp LC(N9)       &kp LC(N0) ,
-                                        ___      ___      ___      , ___    &kp RA(F)      &kp RA(TAB)      
+                   ___          ___         ___         ___         ___      , DWM_MOD(N1)  DWM_MOD(N2) DWM_MOD(N3) DWM_MOD(N4) DWM_MOD(N5) ,
+                 &kp LGUI    &kp LCTRL   &kp LALT    &kp LSHFT      ___      , DWM_MOD(H)   DWM_MOD(J)  DWM_MOD(K)  DWM_MOD(L)  ___,
+               ___      ___      ___      ___      ___                       , DWM_MOD(N6)  DWM_MOD(N7) DWM_MOD(N8) DWM_MOD(N9) DWM_MOD(N0) ,
+                                        ___      ___      ___                , DWM_MOD(TAB) DWM_MOD(F)  DWM_MOD(TAB)      
 )
 
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -293,8 +309,8 @@ ZMK_BASE_LAYER(UTIL,
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
-                &kp LS(LG(N4)) &mkp MB4  U_MS_U &mkp MB5  &kp LC(TAB)  ,   &kp PG_UP     &msc SCRL_UP     &kp C_BRI_DN   &kp C_BRI_UP      &kp C_BRI_MIN,
-                ___     U_MS_L U_MS_D  U_MS_R &kp LC(LS(TAB)) , &mkp MB2    &mkp MB1    &kp C_VOL_DN   &kp C_VOL_UP   &kp C_MUTE,
+                &kp LS(LG(N4)) &mkp MB4  U_MS_U &mkp MB5  &kp LC(LS(TAB))  ,   &kp PG_UP     &msc SCRL_UP     &kp C_BRI_DN   &kp C_BRI_UP      &kp C_BRI_MIN,
+                ___     U_MS_L U_MS_D  U_MS_R &kp LC(TAB) , &mkp MB2    &mkp MB1    &kp C_VOL_DN   &kp C_VOL_UP   &kp C_MUTE,
                 ___      ___      ___      ___      ___       ,  &kp PG_DN  &msc SCRL_DOWN &kp C_PREV &kp C_NEXT &kp C_PP    ,
                                         ___      ___      ___       ,  ___      ___      ___      
 )
@@ -312,15 +328,9 @@ ZMK_BASE_LAYER(SCROLL,
                                   ___      ___      ___       ,   ___      ___      ___      
 )
 ZMK_BASE_LAYER(BT,
-            &bt BT_SEL 5 &bt BT_SEL 6 &bt BT_SEL 7 &bt OUT_TOG &bt BT_CLR  ,   ___      ___      ___        ___       ___ ,
+            ___      ___      ___     &out OUT_TOG &bt BT_CLR  ,   &tog 1      ___      ___        ___       ___ ,
             &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 3 &bt BT_DISC 4,   ___      ___      ___        ___       ___ ,
             &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4,   ___      ___      ___        ___       ___ ,
-                                ___      &bootloader      &sys_reset       ,   &sys_reset      &bootloader      ___      
-)
-ZMK_BASE_LAYER(GAME,
-              &kp TAB    &kp Q  &kp W   &kp E      &kp R                   ,   ___  ___  ___  ___  ___
-              &kp LCTRL  &kp A  &kp S   &kp D      &kp F                   ,   ___  ___  ___  ___  ___
-              &kp LSHFT  &kp Y  &kp X   &kp C      &kp V                   ,   ___  ___  ___  ___  ___
-                          &none   &kp SPACE  &kp LEFT_ALT                  ,    &none  &none
+                                ___      &bootloader      &sys_reset       ,   &sys_reset      &bootloader      ___    
 )
 

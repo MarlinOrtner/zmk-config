@@ -25,7 +25,7 @@ manifest:
     - name: urob
       url-base: https://github.com/urob
     - name: zmkfirmware
-      url-base: https://github.com/petejohanson
+      url-base: https://github.com/zmkfirmware
     - name: bildermankawasaki
       url-base: https://github.com/bildermankawasaki
     - name: 280Zo
