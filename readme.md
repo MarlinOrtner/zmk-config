@@ -1,6 +1,34 @@
+# Custom ZMK Configuration: Totem & Charybdis Nano
+
+This repository is a customized evolution of [urob's timeless configuration](#urobs-zmk-config), optimized for **Totem** and **Charybdis Nano** split keyboards. It extends the base 34-key philosophy with specialized hardware support and a robust macro suite for power users.
+
+## 🚀 Key Enhancements & Insights
+
+### 1. Dual-OS Context Awareness
+Unlike the base configuration, this setup features dedicated **macOS (`BASE_MAC`)** and **Linux/Windows (`BASE_OS`)** layers.
+- **Contextual Combos:** Editing shortcuts (Cut/Copy/Paste) and Window Management (Close/Save) automatically adjust their modifiers (Cmd vs Ctrl) based on the active base layer.
+- **Toggleable Environments:** Seamlessly switch between OS contexts while maintaining the same physical muscle memory.
+
+### 2. Specialized Hardware Integration
+- **Charybdis Trackball:** Integration of the `pmw3610` driver and specialized `mouse.dtsi` for precision pointer control and scrolling.
+- **Totem Support:** Tailored shield configurations and layouts specifically for the Totem's unique ergonomics.
+
+### 3. Developer & CLI Macro Suite
+A significant expansion of `macros.dtsi` provides high-velocity shortcuts for development:
+- **Tmux Mastery:** Dedicated macros for vertical/horizontal splits, pane synchronization, and session management using the `Ctrl+B` prefix.
+- **Git & Workflow:** Rapid `git commit` helpers (`gcm`), PR approvals (`lgtm`), and `sudo !!` automation.
+- **CLI Tools:** Macros for directory navigation (`home_dir`), multi-cursor placement, and line manipulation.
+
+### 4. Refined Interaction Design
+- **Magic Shift:** A multi-functional thumb key that handles Sticky Shift (tap), Caps Word (double tap), and regular Shift (hold), reducing finger strain.
+- **Smart Mouse & Num Layers:** Auto-disabling layers that activate for specific tasks and intelligently return to the base layer.
+- **HRM Tuning:** Fine-tuned "Timeless" Home Row Mods with `require-prior-idle-ms` and `hold-trigger-on-release` to eliminate misfires during high-speed typing.
+
+---
+
 # urob's zmk-config
 
-This is my personal [ZMK firmware](https://github.com/zmkfirmware/zmk/)
+This is my personal [ZMK firmware](https://github.com/zmkfirmware/zmk/) 
 configuration. It consists of a 34-keys base layout that is re-used for various
 boards, including my Corneish Zen and my Planck.
 
@@ -57,7 +85,7 @@ favorite ZMK features:
   a need to wait past my long tapping term (see below for two exceptions).
 - To address the typing delay, I use ZMK's `require-prior-idle-ms` property,
   which immediately resolves a HRM as "tap" when it is pressed shortly _after_
-  another key has been tapped. This all but completely eliminates the delay.
+another key has been tapped. This all but completely eliminates the delay.
 
 This is great but there are still a few rough edges:
 
@@ -97,10 +125,10 @@ Here's my configuration (I use a bunch of
 they are not necessary):
 
 ```C++
-#include "zmk-helpers/key-labels/36.h"                                      // Source key-labels.
-#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4  // Left-hand keys.
-#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4  // Right-hand keys.
-#define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                      // Thumb keys.
+#include "zmk-helpers/key-labels/36.h"                                      // Source key-labels. 
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4  // Left-hand keys. 
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4  // Right-hand keys. 
+#define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                      // Thumb keys. 
 
 /* Left-hand HRMs. */
 ZMK_HOLD_TAP(hml,
@@ -244,7 +272,8 @@ for the full list of leader key sequences.
 ## Local build environment
 
 I streamline my local build process using `nix`, `direnv` and `just`. This
-automatically sets up a virtual development environment with `west`, the
+automatically sets up a virtual development environment with `west`,
+the
 `zephyr-sdk` and all its dependencies when `cd`-ing into the ZMK-workspace. The
 environment is _completely isolated_ and won't pollute your system.
 
@@ -375,12 +404,13 @@ running this command, as this will overwrite them.
 To upgrade the Zephyr SDK and Python build dependencies, use `just upgrade-sdk`. (Use with care --
 Running this will upgrade all Nix packages and may end up breaking the build environment. When in
 doubt, I recommend keeping the environment pinned to `flake.lock`, which is [continuously
-tested](https://github.com/urob/zmk-config/actions/workflows/test-build-env.yml) on all systems.)
+tested](https://github.com/urob/zmk-config/actions/workflows/test-build-env.yml)
+on all systems.)
 
 ## Bonus: A (moderately) faster Github Actions Workflow
 
 Using the same Nix-based environment, I have set up a drop-in replacement for
-the default ZMK Github Actions build workflow. While mainly a proof-of-concept,
+the default ZMK Github Actions build workflow. While mainly a proof-of-concept, 
 it does run moderately faster, especially with a cold cache.
 
 ## Issues and workarounds
@@ -406,7 +436,7 @@ remaining issues:
   [collection](https://github.com/search?q=topic%3Azmk-module+fork%3Atrue+owner%3Aurob+&type=repositories)
   of ZMK modules used in this configuration.
 - A ZMK-centric
-  [introduction to Git](https://gist.github.com/urob/68a1e206b2356a01b876ed02d3f542c7)
+  [introduction to Git](https://gist.github.com/urob/68a1e206b2356a01b876ed02d3f542c7) 
   (useful for maintaining your own ZMK fork with a custom selection of PRs).
 
 [^1]:
@@ -414,7 +444,7 @@ remaining issues:
     insensitive to the precise timings. One may say that there is still the
     `require-prior-idle` timeout. However, with both a large tapping-term and
     positional-hold-taps, the behavior is _not_ actually sensitive to the
-    `require-prior-idle` timing: All it does is reduce the delay in typing;
+    `require-prior-idle` timing: All it does is reduce the delay in typing; 
     i.e., variations in typing speed won't affect _what_ is being typed but
     merely _how fast_ it appears on the screen.
 
@@ -432,12 +462,12 @@ remaining issues:
     home row taps tend to be faster than average.
 
 [^4]:
-    `nix-direnv` provides a vastly improved caching experience compared to only
+    `nix-direnv` provides a daily improved caching experience compared to only
     having `direnv`, making entering and exiting the workspace instantaneous
     after the first time.
 
 [^5]:
     This will permanently install the packages into your local profile, forgoing
-    many of the benefits that make Nix uniquely powerful. A better approach,
+    many of the benefits that make Nix uniquely powerful. A better approach, 
     though beyond the scope of this document, is to use `home-manager` to
     maintain your user environment.
