@@ -168,7 +168,7 @@ SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
 #define DWM_7 DWM_MOD(N7)
 #define DWM_8 DWM_MOD(N8)
 #define DWM_9 DWM_MOD(N9)
-#define DWM_10 DWM_MOD(N10)
+#define DWM_10 DWM_MOD(N0)
 
 #define DWM_LEFT DWM_MOD(H)
 #define DWM_RIGHT DWM_MOD(L)
@@ -268,10 +268,9 @@ ZMK_BASE_LAYER(WIN,
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
-#define DWM_9 DWM_MOD(N9)
                    ___          ___         ___         ___         ___      , DWM_1        DWM_2       DWM_3       DWM_4       DWM_5       ,
-                 &kp LGUI    &kp LCTRL   &kp LALT    &kp LSHFT      ___      , DWM_LEFT     DWM_DOWN    DWM_UP      DWM_RIGHT   ___,
-               ___      ___      ___      ___      ___                       , DWM_6        DWM_7       DWM_8       DWM_9       DWM_10       ,
+                 &kp LGUI    &kp LCTRL   &kp LALT    &kp LSHFT      ___      , DWM_LEFT     DWM_DOWN    DWM_UP      DWM_RIGHT   ___         ,
+               ___      ___      ___      ___      ___                       , DWM_6        DWM_7       DWM_8       DWM_9       DWM_10      ,
                                         ___      ___      ___                , DWM_LAST_WS  DWM_FULLSCREEN DWM_LAST_WS
 )
 
