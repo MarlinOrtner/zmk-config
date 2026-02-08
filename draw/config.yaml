@@ -51,11 +51,14 @@ parse_config:
     "&msc SCRL_RIGHT": Scroll →
 
     "&mkp LCLK": Left Click
+    "&mkp MB1": Left Click
     "&mkp RCLK": Right Click
+    "&mkp MB2": Right Click
     "&mkp MCLK": Middle Click
     "&mkp MB4": Back Click
     "&mkp MB5": Forward Click
 
+    "td_esc_scrl_slow": { "s": "Scroll", "t": "ESC", "h": "Snipe" }
   trans_legend: { "t": "", "type": "trans" }
 
   zmk_combos:

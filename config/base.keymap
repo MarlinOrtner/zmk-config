@@ -155,8 +155,28 @@ SIMPLE_MORPH(comma_inner_morph, CTL, &kp SEMICOLON, &kp LESS_THAN)
 SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &dot_inner_morph)
 SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
 #define CANCEL    &kp K_CANCEL            // Cancel caps-word & auto-layers.
+// DWM Layer
 #define DWM_MOD(KEY) &kp LA(LC(LG(KEY))) // Custom DWM Modifier for MacOS and Linux
 
+#define DWM_1 DWM_MOD(N1)
+#define DWM_2 DWM_MOD(N2)
+#define DWM_2 DWM_MOD(N2)
+#define DWM_3 DWM_MOD(N3)
+#define DWM_4 DWM_MOD(N4)
+#define DWM_5 DWM_MOD(N5)
+#define DWM_6 DWM_MOD(N6)
+#define DWM_7 DWM_MOD(N7)
+#define DWM_8 DWM_MOD(N8)
+#define DWM_9 DWM_MOD(N9)
+#define DWM_10 DWM_MOD(N10)
+
+#define DWM_LEFT DWM_MOD(H)
+#define DWM_RIGHT DWM_MOD(L)
+#define DWM_UP DWM_MOD(K)
+#define DWM_DOWN DWM_MOD(J)
+
+#define DWM_FULLSCREEN DWM_MOD(F)
+#define DWM_LAST_WS DWM_MOD(TAB)
 
 #ifndef ZMK_BASE_LAYER
   #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH)                 \
@@ -229,7 +249,7 @@ ZMK_BASE_LAYER(MOUSE,
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
                 &kp LS(LG(N4)) &mkp MB4  U_MS_U &mkp MB5  &kp LC(TAB)  ,   &kp PG_UP     &msc SCRL_UP     &kp C_BRI_DN   &kp C_BRI_UP      &kp C_BRI_MIN,
-                ___     U_MS_L U_MS_D  U_MS_R &kp LC(LS(TAB)) , &mkp MB2    &mkp MB1    &kp C_VOL_DN   &kp C_VOL_UP   &kp C_MUTE,
+                ___     U_MS_L U_MS_D  U_MS_R &kp LC(LS(TAB)) , &mkp RCLK    &mkp LCLK    &kp C_VOL_DN   &kp C_VOL_UP   &kp C_MUTE,
                 ___      ___      ___      ___      ___       ,  &kp PG_DN  &msc SCRL_DOWN &kp C_PREV &kp C_NEXT &kp C_PP    ,
                                         ___      ___      ___       ,  ___      ___      ___      
 )
@@ -248,11 +268,13 @@ ZMK_BASE_LAYER(WIN,
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
-                   ___          ___         ___         ___         ___      , DWM_MOD(N1)  DWM_MOD(N2) DWM_MOD(N3) DWM_MOD(N4) DWM_MOD(N5) ,
-                 &kp LGUI    &kp LCTRL   &kp LALT    &kp LSHFT      ___      , DWM_MOD(H)   DWM_MOD(J)  DWM_MOD(K)  DWM_MOD(L)  ___,
-               ___      ___      ___      ___      ___                       , DWM_MOD(N6)  DWM_MOD(N7) DWM_MOD(N8) DWM_MOD(N9) DWM_MOD(N0) ,
-                                        ___      ___      ___                , DWM_MOD(TAB) DWM_MOD(F)  DWM_MOD(TAB)      
+#define DWM_9 DWM_MOD(N9)
+                   ___          ___         ___         ___         ___      , DWM_1        DWM_2       DWM_3       DWM_4       DWM_5       ,
+                 &kp LGUI    &kp LCTRL   &kp LALT    &kp LSHFT      ___      , DWM_LEFT     DWM_DOWN    DWM_UP      DWM_RIGHT   ___,
+               ___      ___      ___      ___      ___                       , DWM_6        DWM_7       DWM_8       DWM_9       DWM_10       ,
+                                        ___      ___      ___                , DWM_LAST_WS  DWM_FULLSCREEN DWM_LAST_WS
 )
+
 
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
