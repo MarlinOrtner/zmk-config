@@ -1,28 +1,27 @@
 # Custom ZMK Configuration: Totem & Charybdis Nano
 
-This repository is a customized evolution of [urob's timeless configuration](#urobs-zmk-config), optimized for **Totem** and **Charybdis Nano** split keyboards. It extends the base 34-key philosophy with specialized hardware support and a robust macro suite for power users.
+This repository is a customized evolution of [urob's timeless configuration](#urobs-zmk-config), tailored for the **Totem** and **Charybdis Nano** split keyboards.
 
-## 🚀 Key Enhancements & Insights
+## Supported Keyboards
 
-### 1. Dual-OS Context Awareness
-Unlike the base configuration, this setup features dedicated **macOS (`BASE_MAC`)** and **Linux/Windows (`BASE_OS`)** layers.
-- **Contextual Combos:** Editing shortcuts (Cut/Copy/Paste) and Window Management (Close/Save) automatically adjust their modifiers (Cmd vs Ctrl) based on the active base layer.
-- **Toggleable Environments:** Seamlessly switch between OS contexts while maintaining the same physical muscle memory.
+| Keyboard | Creator | Type | Specs | Est. Price |
+| :--- | :--- | :--- | :--- | :--- |
+| **[Totem](https://github.com/GEIGEIGEIST/totem)** | [Geist (GEIGEIGEIST)](https://github.com/GEIGEIGEIST) | Split Column-Staggered | • 38 keys<br>• Low-profile (Choc)<br>• Wireless (XIAO nRF52840) or Wired (RP2040) | • DIY Kit: ~$105<br>• Pre-built: ~$300+ |
+| **[Charybdis Nano](https://bastardkb.com/charybdis-nano/)** | [Bastard Keyboards (Quentin)](https://bastardkb.com/) | Dactyl Manuform-style w/ Trackball | • 35 keys<br>• Integrated Trackball (PMW3610)<br>• 3D Printed Case | • DIY Kit: ~€180<br>• Pre-built: ~€370+ |
 
-### 2. Specialized Hardware Integration
-- **Charybdis Trackball:** Integration of the `pmw3610` driver and specialized `mouse.dtsi` for precision pointer control and scrolling.
-- **Totem Support:** Tailored shield configurations and layouts specifically for the Totem's unique ergonomics.
+## Keymap Visualization
 
-### 3. Developer & CLI Macro Suite
-A significant expansion of `macros.dtsi` provides high-velocity shortcuts for development:
-- **Tmux Mastery:** Dedicated macros for vertical/horizontal splits, pane synchronization, and session management using the `Ctrl+B` prefix.
-- **Git & Workflow:** Rapid `git commit` helpers (`gcm`), PR approvals (`lgtm`), and `sudo !!` automation.
-- **CLI Tools:** Macros for directory navigation (`home_dir`), multi-cursor placement, and line manipulation.
+The layout is visualized in the `draw/` directory.
 
-### 4. Refined Interaction Design
-- **Magic Shift:** A multi-functional thumb key that handles Sticky Shift (tap), Caps Word (double tap), and regular Shift (hold), reducing finger strain.
-- **Smart Mouse & Num Layers:** Auto-disabling layers that activate for specific tasks and intelligently return to the base layer.
-- **HRM Tuning:** Fine-tuned "Timeless" Home Row Mods with `require-prior-idle-ms` and `hold-trigger-on-release` to eliminate misfires during high-speed typing.
+![Keymap Layout](draw/base.svg)
+
+*(Note: The above image links to `draw/base.svg` in this repository.)*
+
+## Key Features
+- **Dual-OS Support:** Dedicated layers for macOS (`BASE_MAC`) and Windows/Linux (`BASE_OS`) with context-aware shortcuts.
+- **Trackball Integration:** Specialized `mouse.dtsi` for the Charybdis Nano's PMW3610 sensor.
+- **Developer Macros:** A rich suite of macros for Tmux, Git, and CLI navigation.
+- **Timeless Home Row Mods:** Fine-tuned for responsiveness and accuracy.
 
 ---
 
@@ -263,8 +262,7 @@ one-handed Alt-Tab switcher (`PWin` and `NWin`).
 I am using my own implementation of a
 [Leader key](https://github.com/urob/zmk-leader-key) (activated by comboing
 <kbd>S</kbd> + <kbd>T</kbd>) to bind various behaviors to my layout without
-reserving dedicated keys. Currently, I am using them to bind German Umlauts,
-Greek letters for math usage, and various system commands (e.g., to toggle
+reserving dedicated keys. Currently, I am using them to bind German Umlauts, Greek letters for math usage, and various system commands (e.g., to toggle
 Bluetooth). See
 [`leader.dtsi`](https://github.com/urob/zmk-config/blob/main/config/leader.dtsi)
 for the full list of leader key sequences.
@@ -436,7 +434,7 @@ remaining issues:
   [collection](https://github.com/search?q=topic%3Azmk-module+fork%3Atrue+owner%3Aurob+&type=repositories)
   of ZMK modules used in this configuration.
 - A ZMK-centric
-  [introduction to Git](https://gist.github.com/urob/68a1e206b2356a01b876ed02d3f542c7) 
+  [introduction to Git](https://gist.github.com/urob/68a1e206b2356a01b876ed02d3f542c7)
   (useful for maintaining your own ZMK fork with a custom selection of PRs).
 
 [^1]:
@@ -444,7 +442,7 @@ remaining issues:
     insensitive to the precise timings. One may say that there is still the
     `require-prior-idle` timeout. However, with both a large tapping-term and
     positional-hold-taps, the behavior is _not_ actually sensitive to the
-    `require-prior-idle` timing: All it does is reduce the delay in typing; 
+    `require-prior-idle` timing: All it does is reduce the delay in typing;
     i.e., variations in typing speed won't affect _what_ is being typed but
     merely _how fast_ it appears on the screen.
 
@@ -456,18 +454,19 @@ remaining issues:
 [^3]:
     E.g, if your WPM is 70 or larger, then the default of 150ms (=10500/70)
     should work well. The rule of thumb is based on an average character length
-    of 4.7 for English words. Taking into account 1 extra tap for `space`, this
+    of 4.7 for English words. Taking into account 1 extra tap for `space`,
+    this
     yields a minimum `require-prior-idle-ms` of (60 _ 1000) / (5.7 _ x) ≈ 10500
     / x milliseconds. The approximation errs on the safe side, as in practice
     home row taps tend to be faster than average.
 
 [^4]:
-    `nix-direnv` provides a daily improved caching experience compared to only
+    `nix-direnv` provides a vastly improved caching experience compared to only
     having `direnv`, making entering and exiting the workspace instantaneous
     after the first time.
 
 [^5]:
     This will permanently install the packages into your local profile, forgoing
-    many of the benefits that make Nix uniquely powerful. A better approach, 
+    many of the benefits that make Nix uniquely powerful. A better approach,
     though beyond the scope of this document, is to use `home-manager` to
     maintain your user environment.
